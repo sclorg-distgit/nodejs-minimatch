@@ -3,8 +3,8 @@
 %{?nodejs_find_provides_and_requires}
 
 Name:       %{?scl_prefix}nodejs-minimatch
-Version:    3.0.0
-Release:    3%{?dist}
+Version:    3.0.2
+Release:    1%{?dist}
 Summary:    JavaScript glob matcher
 License:    ISC
 URL:        https://github.com/isaacs/minimatch
@@ -36,6 +36,9 @@ cp -p minimatch.js package.json %{buildroot}%{nodejs_sitelib}/minimatch
 %doc README.md LICENSE
 
 %changelog
+* Thu Jul 14 2016 Zuzana Svetlikova <zsvetlik@redhat.com> - 3.0.2-1
+- Resolves: #1355781
+
 * Wed Apr 06 2016 Zuzana Svetlikova <zsvetlik@redhat.com> - 3.0.0-3
 - Remove legacy dependency
 
