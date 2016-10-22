@@ -3,14 +3,12 @@
 %{?nodejs_find_provides_and_requires}
 
 Name:       %{?scl_prefix}nodejs-minimatch
-Version:    3.0.0
-Release:    2%{?dist}
+Version:    3.0.2
+Release:    1%{?dist}
 Summary:    JavaScript glob matcher
-License:    MIT
-Group:      System Environment/Libraries
+License:    ISC
 URL:        https://github.com/isaacs/minimatch
 Source0:    http://registry.npmjs.org/minimatch/-/minimatch-%{version}.tgz
-BuildRoot:  %{_tmppath}/%{pkg_name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:  noarch
 ExclusiveArch: %{nodejs_arches} noarch
 
@@ -22,28 +20,31 @@ Converts glob expressions to JavaScript "RegExp" objects.
 %prep
 %setup -q -n package
 
-%nodejs_fixdep lru-cache
+#%nodejs_fixdep lru-cache
 
 %build
 #nothing to do
 
 %install
-rm -rf %{buildroot}
-
 mkdir -p %{buildroot}%{nodejs_sitelib}/minimatch
 cp -p minimatch.js package.json %{buildroot}%{nodejs_sitelib}/minimatch
 
 %nodejs_symlink_deps
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root,-)
 %{nodejs_sitelib}/minimatch
 %doc README.md LICENSE
 
 %changelog
+* Thu Jul 14 2016 Zuzana Svetlikova <zsvetlik@redhat.com> - 3.0.2-1
+- Resolves: #1355781
+
+* Thu Jun 09 2016 Zuzana Svetlikova <zsvetlik@redhat.com> - 3.0.0-4
+- Resolves: rhbz#1334856, fixes wrong license
+
+* Wed Apr 06 2016 Zuzana Svetlikova <zsvetlik@redhat.com> - 3.0.0-3
+- Remove legacy dependency
+
 * Sun Feb 14 2016 Zuzana Svetlikova <zsvetlik@redhat.com> - 3.0.0-2
 - rebuilt
 
