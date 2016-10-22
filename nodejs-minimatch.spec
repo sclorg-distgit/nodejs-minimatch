@@ -3,7 +3,7 @@
 %{?nodejs_find_provides_and_requires}
 
 Name:       %{?scl_prefix}nodejs-minimatch
-Version:    3.0.0
+Version:    3.0.2
 Release:    1%{?dist}
 Summary:    JavaScript glob matcher
 License:    MIT
@@ -44,6 +44,9 @@ rm -rf %{buildroot}
 %doc README.md LICENSE
 
 %changelog
+* Thu Jul 14 2016 Zuzana Svetlikova <zsvetlik@redhat.com> - 3.0.2-1
+- Resolves: #1355781
+
 * Mon Nov 30 2015 Tomas Hrcka <thrcka@redhat.com> - 3.0.0-1
 - New upstream release
 
